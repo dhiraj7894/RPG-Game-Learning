@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c02f38f74664afa42b8e4cc7f50cb2ab, type: 3}
-  m_Name: Platelegs
+  m_Name: Shoes
   m_EditorClassIdentifier: 
-  name: Platelegs
-  icon: {fileID: 21300000, guid: 28f319cd66add584b83220507f489d1a, type: 3}
+  name: Shoes
+  icon: {fileID: 0}
   isDefaultItem: 0
-  equipmentSlot: 2
-  mesh: {fileID: 5747910564715950264, guid: 6c8a2294248f90c42b9a12ed2f6ec456, type: 3}
-  coveredMeshResions: 00000000
-  armorModifire: 2
+  equipmentSlot: 5
+  mesh: {fileID: 4381044067394424319, guid: 45b449982979fbb45a1152a17ab9d464, type: 3}
+  coveredMeshResions: 
+  armorModifire: 0
   damageModifire: 0

@@ -45,6 +45,7 @@ public class EquipmentManager : MonoBehaviour
         {
             onEquipmentChanged.Invoke(newItem, oldItem);
         }
+        setEquipmentBlendShape(newItem, 100);
 
         currentEquipment[slotIndex] = newItem;
 
@@ -64,6 +65,7 @@ public class EquipmentManager : MonoBehaviour
                 Destroy(currentMeshes[slotIndex].gameObject);
             }
             Equipment oldItem = currentEquipment[slotIndex];
+            setEquipmentBlendShape(oldItem, 0);
             inventory.Add(oldItem);
 
             currentEquipment[slotIndex] = null;
@@ -80,6 +82,14 @@ public class EquipmentManager : MonoBehaviour
         for (int i = 0; i < currentEquipment.Length; i++)
         {
             Unequip(i);
+        }
+    }
+
+    void setEquipmentBlendShape(Equipment item, int weight)
+    {
+        foreach(EquipmentMeshResion blendShape in item.coveredMeshResions)
+        {
+            targetMesh.SetBlendShapeWeight((int)blendShape, weight);
         }
     }
     private void Update()

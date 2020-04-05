@@ -7,6 +7,7 @@ public class Equipment : Item
 {
     public EquipmentSlot equipmentSlot;
     public SkinnedMeshRenderer mesh;
+    public EquipmentMeshResion[] coveredMeshResions;
 
     public int armorModifire;
     public int damageModifire;
@@ -19,3 +20,4 @@ public class Equipment : Item
     }
 }
 public enum EquipmentSlot { Head, Chest, Legs, Weapon, Shield, Feet}
+public enum EquipmentMeshResion { Legs, Armr, Torso};
