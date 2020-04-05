@@ -14,6 +14,7 @@ public class EquipmentManager : MonoBehaviour
     }
     #endregion
 
+    public Equipment[] defaultItem;
     public SkinnedMeshRenderer targetMesh;
     Equipment[] currentEquipment;
     SkinnedMeshRenderer[] currentMeshes;
@@ -30,16 +31,19 @@ public class EquipmentManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         currentMeshes = new SkinnedMeshRenderer[numSlots];
+
+        EquipDefaultItem();
     }
     public void Equip(Equipment newItem)
     {
         int slotIndex = (int)newItem.equipmentSlot;
-        Equipment oldItem = null;
-        if (currentEquipment[slotIndex] != null)
+        
+        Equipment oldItem = Unequip(slotIndex); 
+        /*if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
             inventory.Add(oldItem);
-        }
+        }*/
 
         if (onEquipmentChanged != null)
         {
@@ -56,7 +60,7 @@ public class EquipmentManager : MonoBehaviour
         currentMeshes[slotIndex] = newMesh;
     }
 
-    public void Unequip(int slotIndex)
+    public Equipment Unequip(int slotIndex)
     {
         if (currentEquipment[slotIndex] != null)
         {
@@ -74,7 +78,9 @@ public class EquipmentManager : MonoBehaviour
             {
                 onEquipmentChanged.Invoke(null, oldItem);
             }
+            return oldItem;
         }
+        return null;
     }
 
     public void UnequipAll()
@@ -83,6 +89,7 @@ public class EquipmentManager : MonoBehaviour
         {
             Unequip(i);
         }
+        EquipDefaultItem();
     }
 
     void setEquipmentBlendShape(Equipment item, int weight)
@@ -90,6 +97,13 @@ public class EquipmentManager : MonoBehaviour
         foreach(EquipmentMeshResion blendShape in item.coveredMeshResions)
         {
             targetMesh.SetBlendShapeWeight((int)blendShape, weight);
+        }
+    }
+    void EquipDefaultItem()
+    {
+        foreach(Equipment item in defaultItem)
+        {
+            Equip(item);
         }
     }
     private void Update()
