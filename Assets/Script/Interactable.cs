@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void interact()
     {
-        Debug.Log("Intraction with "+ transform.name);
+       // Debug.Log("Intraction with "+ transform.name);
     }
 
     public void onFocused(Transform playerTransform)

@@ -19,4 +19,4 @@ MonoBehaviour:
   mesh: {fileID: 4535795851530411516, guid: 7ceb72a91cccddf4489a3c3294e069a6, type: 3}
   coveredMeshResions: 
   armorModifire: 2
-  damageModifire: 0
+  damageModifire: 1
